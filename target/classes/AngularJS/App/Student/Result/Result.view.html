@@ -1,0 +1,73 @@
+<!-- BEGIN PAGE BAR -->
+
+<!-- <meta charset="UTF-8">  -->
+
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <h2>Meu Resultado</h2>
+        </li>
+    </ul>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+<br />
+<!-- END PAGE TITLE-->
+<div class="portlet box purple">
+    <div class="portlet-title">
+
+        <div class="tools">
+            <a href="javascript:;" class="collapse"> </a>
+        </div>
+
+    </div>
+    <div class="portlet-body">
+
+        <div class="table-toolbar">
+            <h2>{{aluno.name}}</h2>
+        </div>
+
+        <div>
+
+        </div> 
+        <div class="row" ng-show="finalizado" style="margin-left:50px">
+            <!-- BEGIN CHART-->
+            <div class="col-md-6">
+
+                <canvas id="radarChart" width=600 height=300></canvas>
+
+            </div>
+            <!-- END CHART-->
+            
+            <label style="padding-left:5%">Comentário:</label>
+            <div class="col-md-6" style="padding-top:5%; padding-left:10%;">
+	            <div ng-if="comentario.length > 0">
+		            <p>
+	                	<div class="row"> Ol&aacute; {{aluno.name}}, </div>
+	                	<div class="row" style="padding-top:20px; padding-left:10px"> {{comentario}} </div>
+	                    <div class="row" style="padding-top:20px;">
+		                    Att.
+		                    <br /><br />
+		                    Psicóloga
+	                    </div>	
+	                     
+	                </p>
+	            </div>
+                <div ng-if="comentario.length == 0" >
+                	<b style="color:orangered">
+                    	AGUARDE AVALIAÇÃO DA PSICOLOGA...
+                	</b>
+                </div>
+                
+            </div>
+        </div>
+
+        <div ng-hide="finalizado" style="margin-left:50px">
+            <p>
+                <br />
+                :/ Ops! parece que você ainda não concluiu.. 
+            </p>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿<!-- <meta charset="UTF-8">  -->
+
+<!-- BEGIN PAGE BAR -->
+
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <h2>Olá - {{psicologa.name}}</h2>
+            <i class="fa fa-circle"></i>
+        </li>
+        
+    </ul>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+<br />
+<!-- END PAGE TITLE-->
+<div class="portlet box purple">
+
+    <div class="portlet-title">
+        
+        <div class="tools">
+            <a href="javascript:;" class="collapse"> </a>
+        </div>
+
+    </div>
+    <div class="row">
+        <!-- Dropdown menu escolha do curso-->
+        <div class="col-md-3">
+            <div layout="column">
+                <select class="selectpicker form-control" data-ng-model="cursoSelected" data-ng-options="curso.name for curso in cursos">
+                    <option value="">Selecione Curso</option>
+                </select>
+            </div>
+
+        </div>
+        <!-- Dropdown menu escolha do ano-->
+        <div class="col-md-3">
+            <div class="form-group">
+                <select class="selectpicker form-control" data-ng-model="anoSelected" data-ng-options="year.ano for year in _ano">
+                    <option value="">Selecione Ano</option>
+                </select>
+            </div>
+        </div>
+        <!-- Dropdown menu escolha do semestre-->
+        <div class="col-md-3">
+            <div class="form-group">
+                <select class="selectpicker form-control" data-ng-model="semestreSelected" data-ng-options="sem.desc for sem in semestres">
+                    <option value="">Selecione Semestre</option>
+                </select>
+            </div>
+        </div>
+
+
+    </div>
+
+    
+
+    <div class="portlet-body">
+        
+        
+        <!-- BEGIN FORM-->
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>RA</th>
+                        <th>Nome</th>
+                        <th>Situação</th>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="item in alunos | filter:cursoSelected.name | filter:anoSelected.ano | filter: (semestreSelected.id | zeros)">
+                        <td>{{item.ra}}</td>
+                        <td>{{item.user.name}}</td>
+                        <td>
+                            <b ng-show="item.verification == situacao[0].code" style="color:orangered;">{{situacao[0].nome}}</b>
+                            <a ng-show="item.verification == situacao[1].code" class="btn btn-info" ng-click="avaliar(item.user.userCode);">{{situacao[1].nome}}</a>
+                            <b ng-show="item.verification == situacao[2].code" style="color:forestgreen">{{situacao[2].nome}}</b>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- END FORM-->
+    </div>
+</div>
